@@ -15,7 +15,7 @@ This project utilizes a unique, AI-assisted workflow for continuous practice:
 
 ## 🛠 Tech Stack
 
-* **Java 17**: Core language used for all pattern implementations.
+* **Java 21**: Core language used for all pattern implementations.
 * **Maven**: Dependency and build management.
 * **Spring Framework (Context 6.1.4)**: Used in specific patterns to demonstrate real-world Dependency Injection, Registry patterns, and Inversion of Control.
 
