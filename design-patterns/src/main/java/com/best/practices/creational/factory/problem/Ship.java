@@ -1,4 +1,4 @@
-package com.best.practices.factory.refactor;
+package com.best.practices.creational.factory.problem;
 
 public class Ship implements Transport {
     @Override

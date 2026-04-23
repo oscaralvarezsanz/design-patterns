@@ -1,16 +1,17 @@
-package com.best.practices.factory.refactor;
+package com.best.practices.creational.factory.refactor;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class TruckFactory implements TransportFactory {
+public class ShipFactory implements TransportFactory{
+    
     @Override
     public Transport createTransport() {
-        return new Truck();
+        return new Ship();
     }
 
     @Override
     public TransportType getType() {
-        return TransportType.TRUCK;
+        return TransportType.SHIP;
     }
 }

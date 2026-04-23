@@ -1,4 +1,4 @@
-package com.best.practices.factory.problem;
+package com.best.practices.creational.factory.problem;
 
 public class Truck implements Transport {
     @Override
