@@ -1,8 +1,11 @@
 package com.best.practices.structural.bridge.refactor;
 
 public abstract class RemoteControl {
-    protected int volume = 30;
-    protected boolean on = false;
+    protected Device device;
+
+    public RemoteControl(Device device) {
+        this.device = device;
+    }
 
     public abstract void power();
     public abstract void volumeDown();
