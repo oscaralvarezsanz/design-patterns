@@ -21,7 +21,7 @@ When the user asks to practice a design pattern (e.g., "Create an exercise for t
 5. **Generate the `refactor` Skeleton:**
    - In the `refactor` package, provide a basic skeleton or the identical starting code from the `problem` package.
    - Set up the environment so the user can complete the refactor.
-   - Do NOT provide the final solution in the `refactor` package. Leave the implementation of the pattern to the user.
+   - Do NOT provide the final solution in the `refactor` package or steps to be taken to implement the pattern. Leave the implementation of the pattern to the user.
 6. **Provide Instructions to the User:**
    - Explain the scenario simulated in the `problem` package.
    - Point out the specific code smells or design flaws in the `problem` code.
