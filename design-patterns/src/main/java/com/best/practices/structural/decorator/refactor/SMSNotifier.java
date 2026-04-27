@@ -1,6 +1,10 @@
 package com.best.practices.structural.decorator.refactor;
 
-public class SMSNotifier extends Notifier {
+public class SMSNotifier extends NotifierDecorator {
+    public SMSNotifier(Notifier wrappedNotifier) {
+        super(wrappedNotifier);
+    }
+
     @Override
     public void send(String message) {
         super.send(message);

@@ -64,3 +64,19 @@ classDiagram
 * It's hard to remove a specific wrapper from the wrappers stack.
 * It's hard to implement a decorator in such a way that its behavior doesn't depend on the order in the decorators stack.
 * The initial configuration code of layers might look pretty ugly.
+
+> [!NOTE]
+> **Decorator vs Strategy/Registry (List of Beans)**
+> 
+> The Notification system is a classic academic example used to demonstrate the Decorator pattern because it perfectly illustrates the problem of "subclass explosion" and how dynamic composition solves it.
+> 
+> However, in a real-world production environment (e.g., Spring Boot), if you just need to "fire and forget" independent notifications across multiple channels, using a list of beans (similar to a Registry, Strategy, or Observer pattern) is often cleaner and more scalable. 
+> 
+> **When does Decorator truly shine?**
+> Decorator is the superior choice when the wrappers need to **transform data, intercept the flow, or depend on execution order**. For example, if you need to:
+> 1. Filter profanity from a message.
+> 2. Encrypt the message.
+> 3. Compress the message.
+> 4. Save it to disk.
+> 
+> In this case, the output of one step is the input of the next. The `ProfanityFilterDecorator` wraps the `EncryptDecorator`, which wraps the `CompressDecorator`. This layered data transformation is where the Decorator pattern (used heavily in Java's I/O Streams and web server middlewares) is irreplaceable.

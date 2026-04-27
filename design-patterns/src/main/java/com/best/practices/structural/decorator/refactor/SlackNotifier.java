@@ -1,6 +1,10 @@
 package com.best.practices.structural.decorator.refactor;
 
-public class SlackNotifier extends Notifier {
+public class SlackNotifier extends NotifierDecorator {
+    public SlackNotifier(Notifier wrappedNotifier) {
+        super(wrappedNotifier);
+    }
+
     @Override
     public void send(String message) {
         super.send(message);
