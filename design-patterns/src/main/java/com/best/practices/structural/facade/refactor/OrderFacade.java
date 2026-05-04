@@ -1,19 +1,36 @@
 package com.best.practices.structural.facade.refactor;
 
-import com.best.practices.structural.facade.problem.*;
-
 public class OrderFacade {
-    private InventorySystem inventory;
-    private PaymentSystem payment;
-    private ShippingSystem shipping;
-    private NotificationSystem notification;
+    private InventoryService inventory;
+    private PaymentService payment;
+    private ShippingService shipping;
+    private NotificationService notification;
 
-    public OrderFacade() {
-        this.inventory = new InventorySystem();
-        this.payment = new PaymentSystem();
-        this.shipping = new ShippingSystem();
-        this.notification = new NotificationSystem();
+    public OrderFacade(InventoryService inventory,
+                       PaymentService payment,
+                       ShippingService shipping,
+                       NotificationService notification) {
+        this.inventory = inventory;
+        this.payment = payment;
+        this.shipping = shipping;
+        this.notification = notification;
     }
 
-    // TODO: Implement a method to place an order that encapsulates the complex subsystem interactions
+    public void placeOrder(String productId, String accountId, String email, double amount){
+        if(!inventory.checkStock(productId)){
+            notification.sendEmail(email, "Sorry, the product is out of stock.");
+            System.out.println("Order placement failed due to out of stock.");
+            return;
+        }
+        inventory.reserveProduct(productId);
+        if (!payment.processPayment(accountId, amount)){
+            notification.sendEmail(email, "Payment failed for your order.");
+            System.out.println("Order placement failed due to payment issue.");
+            return;
+        }
+        shipping.calculateShipping();
+        shipping.shipOrder(productId);
+        notification.sendEmail(email, "Your order for " + productId + " has been shipped!");
+        System.out.println("Order placed successfully.");
+    }
 }
